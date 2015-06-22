@@ -5,7 +5,7 @@
     <groupId>o2_ooa</groupId>
     <artifactId>SPA</artifactId>
     <name>SPA</name>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0</version>
  
     <pluginRepositories>
