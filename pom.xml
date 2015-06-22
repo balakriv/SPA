@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>o2_ooa</groupId>
+    <artifactId>SPAService</artifactId>
+    <name>SPAService</name>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+ 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>eviwarePluginRepository</id>
+            <url>http://www.eviware.com/repository/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+     
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>eviware</groupId>
+                <artifactId>maven-soapui-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <id>soapui-tests</id>
+                        <configuration>
+                            <projectFile>${basedir}/testing/ref/spaservice-2-0-soapui-project.xml</projectFile>
+                            <outputFolder>${basedir}/target/soapui</outputFolder>
+                            <junitReport>true</junitReport>
+                            <exportAll>true</exportAll>
+                            <printReport>true</printReport>
+                            <settingsFile>soapui-settings.xml</settingsFile>
+                        </configuration>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency> 
+                        <groupId>com.oracle</groupId> 
+                        <artifactId>ojdbc5</artifactId> 
+                        <version>11.1.0</version> 
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+ 
+     
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>target/site/soapui</outputDirectory>
+                    <reportsDirectories>
+                        <reportsDirectories>target/soapui/</reportsDirectories>
+                    </reportsDirectories>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
