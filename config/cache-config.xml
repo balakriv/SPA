@@ -1,0 +1,26 @@
+<cc:cacheConfig xmlns:cc="http://soa.o2.co.uk/config/CacheConfig">
+   <cc:service name="Spa_2_0">
+      <cc:operation name="getServiceProviderDetails">
+         <cc:cacheEnabled>true</cc:cacheEnabled>
+         <cc:ttlMins>30</cc:ttlMins>
+         <cc:cacheKeys>
+            <cc:key>sad:getServiceProviderDetails/sad:msisdn</cc:key>
+         </cc:cacheKeys>
+         <cc:namespaceInfo>
+            <cc:prefix>sad</cc:prefix>
+            <cc:namespace>http://soa.o2.co.uk/sdp/spadata_2</cc:namespace>
+         </cc:namespaceInfo>
+      </cc:operation>
+      <cc:operation name="getServiceProviderCategories">
+         <cc:cacheEnabled>true</cc:cacheEnabled>
+         <cc:ttlMins>30</cc:ttlMins>
+         <cc:cacheKeys>
+            <cc:key>sad:getServiceProviderCategories/sad:msisdn</cc:key>
+         </cc:cacheKeys>
+         <cc:namespaceInfo>
+            <cc:prefix>sad</cc:prefix>
+            <cc:namespace>http://soa.o2.co.uk/sdp/spadata_2</cc:namespace>
+         </cc:namespaceInfo>
+      </cc:operation>
+   </cc:service>
+</cc:cacheConfig>

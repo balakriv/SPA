@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:con="http://www.bea.com/wli/sb/stages/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isTracingEnabled="false" isAutoPublish="false" xmlns:ser="http://www.bea.com/wli/sb/services">
+    <ser:description>This Service will be used the access the existing Web Service SPA . The Service Provider API (SPA) provide
+ key functions to enable third parties and internal O2 systems to query the Service 
+Provider Details based on subscribers MSISDN.
+The operations implemented in this service are :
+1)GetServiceProviderDetails
+2)GetServiceProviderCategories</ser:description>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con1:SoapBindingType" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con1:wsdl ref="NorthBoundInterfaces/spaservice_2_0"/>
+      <con1:port>
+        <con1:name>SpaPort</con1:name>
+        <con1:namespace>http://soa.o2.co.uk/sdp/spaservice_2</con1:namespace>
+      </con1:port>
+      <con1:selector type="SOAP body">
+        <con1:mapping operation="getServiceProviderCategories" value=""/>
+        <con1:mapping operation="getServiceProviderDetails" value=""/>
+      </con1:selector>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+  </ser:coreEntry>
+  <ser:endpointConfig xmlns:ser="http://www.bea.com/wli/sb/services">
+    <tran:provider-id xmlns:tran="http://www.bea.com/wli/sb/transports">http</tran:provider-id>
+    <tran:inbound xmlns:tran="http://www.bea.com/wli/sb/transports">true</tran:inbound>
+    <tran:URI xmlns:tran="http://www.bea.com/wli/sb/transports">
+      <env:value xmlns:env="http://www.bea.com/wli/config/env">/services/sdp/Spa_2_0</env:value>
+    </tran:URI>
+    <tran:inbound-properties xmlns:tran="http://www.bea.com/wli/sb/transports"/>
+    <tran:all-headers xmlns:tran="http://www.bea.com/wli/sb/transports">false</tran:all-headers>
+    <tran:provider-specific xmlns:tran="http://www.bea.com/wli/sb/transports">
+      <http:inbound-properties xmlns:http="http://www.bea.com/wli/sb/transports/http"/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router xmlns:ser="http://www.bea.com/wli/sb/services">
+    <con:pipeline type="response" name="GetServiceProviderCategories Gateway_response" errorHandler="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fb2" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Update Cache">
+        <con:comment>Update Cache data If required</con:comment>
+        <con:context/>
+        <con:actions>
+          <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:comment xmlns:con2="http://www.bea.com/wli/sb/stages/config">If
+     Response is not retrieved from cache
+     Call storeCache to update the cache 
+     with northbound response
+Else
+    Display the same cahe response 
+    as SOAP Response</con2:comment>
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7fb9</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($cachedData) = "NO PAYLOAD"</con2:xqueryText>
+              </con1:condition>
+              <con1:actions>
+                <con1:javaCallout varName="">
+                  <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7326770370922446962-a5b9158.11cf9d86166.-7fec</con2:id>
+                  <con1:archive ref="Utility/o2framework/o2framework"/>
+                  <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                  <con1:method>public static void storeCache(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                  </con1:expr>
+                </con1:javaCallout>
+              </con1:actions>
+            </con1:case>
+            <con1:default>
+              <con1:replace varName="body" contents-only="true">
+                <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7326770370922446962-a5b9158.11cf9d86166.-7feb</con2:id>
+                <con1:location>
+                  <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">fn-bea:inlinedXML($cachedData)</con2:xqueryText>
+                </con1:expr>
+              </con1:replace>
+            </con1:default>
+          </con1:ifThenElse>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="error" name="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fa9" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Generic Error Handling">
+        <con:comment>Handles the validation error -ALSB or backend</con:comment>
+        <con:context>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="sad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7fac</con2:id>
+            <con1:location>
+              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+            </con1:location>
+            <con1:expr>
+              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                <con2:resource ref="Spa_2_0/transformations/AlsbFaultToGetServiceProviderDetailsFault"/>
+                <con2:param name="fault1">
+                  <con2:path>$fault</con2:path>
+                </con2:param>
+                <con2:param name="transactionId">
+                  <con2:path>data($header/xcore:SOATransactionID)</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con1:expr>
+          </con1:replace>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd2</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logFault(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, java.lang.String)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($body/soap-env:Fault/detail/sad:getServiceProviderDetailsFault/xcore:SOAFaultCode)</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+            <con1:id>_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd1</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="error" name="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fbc" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Generic Error Handling">
+        <con:comment>Handles all the Validation related errors</con:comment>
+        <con:context>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="sad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7fac</con2:id>
+            <con1:location>
+              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+            </con1:location>
+            <con1:expr>
+              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                <con2:resource ref="Spa_2_0/transformations/AlsbFaultToGetServiceProviderDetailsFault"/>
+                <con2:param name="fault1">
+                  <con2:path>$fault</con2:path>
+                </con2:param>
+                <con2:param name="transactionId">
+                  <con2:path>data($header/xcore:SOATransactionID)</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con1:expr>
+          </con1:replace>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd2</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logFault(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, java.lang.String)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($body/soap-env:Fault/detail/sad:getServiceProviderDetailsFault/xcore:SOAFaultCode)</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+            <con1:id>_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd1</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="request" name="GetServiceProviderDetails Gateway_request" errorHandler="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fbc" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Validate GetServiceProviderDetails Request">
+        <con:comment>Validates the request message against the xsd.</con:comment>
+        <con:context>
+          <con1:varNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:validate xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-4080738010950453388-34d819b3.1274cbda58d.-7fdf</con2:id>
+            <con1:schema ref="NorthBoundInterfaces/spadata_2_0"/>
+            <con1:schemaElement xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">spad:getServiceProviderDetails</con1:schemaElement>
+            <con1:varName>body</con1:varName>
+            <con1:location>
+              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">./spad:getServiceProviderDetails</con2:xpathText>
+            </con1:location>
+          </con1:validate>
+        </con:actions>
+      </con:stage>
+      <con:stage name="Save GetServiceProviderDetais Request">
+        <con:comment>Saving the incoming request 
+GetServiceProviderDetails 
+Request to a variable.</con:comment>
+        <con:context>
+          <con1:varNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:assign varName="getServiceProviderDetailsRq" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ff1</con2:id>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body/spad:getServiceProviderDetails</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="Get Cached  GetServiceProviderDetails Data">
+        <con:comment>Call getCachedPayload to get the cached data</con:comment>
+        <con:context/>
+        <con:actions>
+          <con1:javaCallout varName="cachedData" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:comment xmlns:con2="http://www.bea.com/wli/sb/stages/config">Getting data from cache</con2:comment>
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7fef</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static java.lang.String getCachedPayload(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="GetServiceProviderDetails Gateway_response" errorHandler="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fa9" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Update Cache">
+        <con:comment>Update Cache data If required</con:comment>
+        <con:context/>
+        <con:actions>
+          <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:comment xmlns:con2="http://www.bea.com/wli/sb/stages/config">If
+     Response is not retrieved from cache
+     Call storeCache to update the cache 
+     with northbound response
+Else
+    Display the same cahe response 
+    as SOAP Response</con2:comment>
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7fbc</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($cachedData) = "NO PAYLOAD"</con2:xqueryText>
+              </con1:condition>
+              <con1:actions>
+                <con1:javaCallout varName="">
+                  <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7326770370922446962-a5b9158.11cf9d86166.-7fec</con2:id>
+                  <con1:archive ref="Utility/o2framework/o2framework"/>
+                  <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                  <con1:method>public static void storeCache(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                  </con1:expr>
+                </con1:javaCallout>
+              </con1:actions>
+            </con1:case>
+            <con1:default>
+              <con1:replace varName="body" contents-only="true">
+                <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7326770370922446962-a5b9158.11cf9d86166.-7feb</con2:id>
+                <con1:location>
+                  <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">fn-bea:inlinedXML($cachedData)</con2:xqueryText>
+                </con1:expr>
+              </con1:replace>
+            </con1:default>
+          </con1:ifThenElse>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="error" name="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fb7" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Generic Error Handling">
+        <con:comment>Handles the validation error -ALSB or backend</con:comment>
+        <con:context>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="sad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7fba</con2:id>
+            <con1:location>
+              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+            </con1:location>
+            <con1:expr>
+              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                <con2:resource ref="Spa_2_0/transformations/AlsbFaultToGetServiceProviderCategoriesFault"/>
+                <con2:param name="fault1">
+                  <con2:path>$fault</con2:path>
+                </con2:param>
+                <con2:param name="transactionId">
+                  <con2:path>data($header/xcore:SOATransactionID)</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con1:expr>
+          </con1:replace>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-1366624814779920276--4f1b4a43.11c6ee9aaea.-7fe2</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logFault(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, java.lang.String)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($body/soap-env:Fault/detail/sad:getServiceProviderCategoriesFault/xcore:SOAFaultCode)</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+            <con1:id>_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7fb8</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="request" name="GetServiceProviderCategories Gateway_request" errorHandler="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fb7" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Validate GetServiceProviderCategories Request">
+        <con:comment>Validates theGetServiceProviderCategories 
+against the xsd.</con:comment>
+        <con:context>
+          <con1:varNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:validate xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-4080738010950453388-34d819b3.1274cbda58d.-7fe3</con2:id>
+            <con1:schema ref="NorthBoundInterfaces/spadata_2_0"/>
+            <con1:schemaElement xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">spad:getServiceProviderCategories</con1:schemaElement>
+            <con1:varName>body</con1:varName>
+            <con1:location>
+              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">./spad:getServiceProviderCategories</con2:xpathText>
+            </con1:location>
+          </con1:validate>
+        </con:actions>
+      </con:stage>
+      <con:stage name="Save GetServiceProviderCategories Request">
+        <con:comment>Saving the incoming request 
+GetServiceProviderCategories 
+Request to a variable.</con:comment>
+        <con:context>
+          <con1:varNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:assign varName="getServiceProviderCategoriesRq" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ff5</con2:id>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body/spad:getServiceProviderCategories</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="Get Cached GetServiceProviderCategories Data">
+        <con:comment>Call getCachedPayload to get the cached data</con:comment>
+        <con:context/>
+        <con:actions>
+          <con1:javaCallout varName="cachedData" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:comment xmlns:con2="http://www.bea.com/wli/sb/stages/config">Getting data from cache</con2:comment>
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ff3</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static java.lang.String getCachedPayload(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="error" name="_onErrorHandler-7835478755480183626--2a2f186d.11b4963c0d8.-7fb2" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="Generic Error Handling">
+        <con:comment>Handles the validation error -ALSB or backend</con:comment>
+        <con:context>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="sad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd3</con2:id>
+            <con1:location>
+              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+            </con1:location>
+            <con1:expr>
+              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                <con2:resource ref="Spa_2_0/transformations/AlsbFaultToGetServiceProviderCategoriesFault"/>
+                <con2:param name="fault1">
+                  <con2:path>$fault</con2:path>
+                </con2:param>
+                <con2:param name="transactionId">
+                  <con2:path>data($header/xcore:SOATransactionID)</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con1:expr>
+          </con1:replace>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd2</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logFault(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, java.lang.String)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($body/soap-env:Fault/detail/sad:getServiceProviderCategoriesFault/xcore:SOAFaultCode)</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+            <con1:id>_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7fd1</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con1:pipeline type="error" name="_onErrorHandler-8722420031164256680--25ff1cc7.12234fa8255.-7fa8" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="SPA Backend Soap Fault and ALSB Fault Handling " xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+        <con:comment>SPA Backend Soap Fault and ALSB Fault Handling</con:comment>
+        <con:context>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="sad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:comment xmlns:con2="http://www.bea.com/wli/sb/stages/config">Handle the backend or ALSB fault depending 
+on fault type.</con2:comment>
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7fad</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">fn:local-name($body/*[1])='Fault'</con2:xqueryText>
+              </con1:condition>
+              <con1:actions>
+                <con1:javaCallout varName="">
+                  <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-486332534768362721--622d7e6a.11c69a6032b.-7ffa</con2:id>
+                  <con1:archive ref="Utility/o2framework/o2framework"/>
+                  <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                  <con1:method>public static void logInbound(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$outbound</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$headerValue</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                  </con1:expr>
+                </con1:javaCallout>
+                <con1:replace varName="body" contents-only="true">
+                  <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-5247063484898311428--2617a4ba.11b415a5ee2.-7fbd</con2:id>
+                  <con1:location>
+                    <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                  </con1:location>
+                  <con1:expr>
+                    <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                      <con2:resource ref="Spa_2_0/transformations/SPABackendFaultToSPAAdapterFault"/>
+                      <con2:param name="operationName">
+                        <con2:path>$operation</con2:path>
+                      </con2:param>
+                      <con2:param name="fault">
+                        <con2:path>$body/soap-env:Fault</con2:path>
+                      </con2:param>
+                      <con2:param name="configXML">
+                        <con2:path>$configXML</con2:path>
+                      </con2:param>
+                      <con2:param name="transactionId">
+                        <con2:path>data($headerValue/xcore:SOATransactionID)</con2:path>
+                      </con2:param>
+                    </con2:xqueryTransform>
+                  </con1:expr>
+                </con1:replace>
+              </con1:actions>
+            </con1:case>
+            <con1:default>
+              <con1:replace contents-only="true" varName="body">
+                <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6002650197694226935-426a651c.11abf346e82.-7f9f</con2:id>
+                <con1:location>
+                  <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                    <con2:resource ref="Spa_2_0/transformations/AlsbFaultToGetServiceProviderCategoriesFault"/>
+                    <con2:param name="fault1">
+                      <con2:path>$fault</con2:path>
+                    </con2:param>
+                    <con2:param name="transactionId">
+                      <con2:path>data($headerValue/xcore:SOATransactionID)</con2:path>
+                    </con2:param>
+                  </con2:xqueryTransform>
+                </con1:expr>
+              </con1:replace>
+            </con1:default>
+          </con1:ifThenElse>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7faa</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logFault(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, java.lang.String)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$headerValue</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($body/soap-env:Fault/detail/sad:getServiceProviderCategoriesFault/xcore:SOAFaultCode)</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+            <con1:id>_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7fa9</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con1:pipeline>
+    <con1:pipeline type="error" name="_onErrorHandler-8722420031164256680--25ff1cc7.12234fa8255.-7f9a" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="SPA Backend Soap Fault and ALSB Fault Handling " xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+        <con:comment>SPA Backend Soap Fault and ALSB Fault Handling</con:comment>
+        <con:context>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="sad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:comment xmlns:con2="http://www.bea.com/wli/sb/stages/config">Handle the backend or ALSB fault depending 
+on fault type.</con2:comment>
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7f9f</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">fn:local-name($body/*[1])='Fault'</con2:xqueryText>
+              </con1:condition>
+              <con1:actions>
+                <con1:javaCallout varName="">
+                  <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-486332534768362721--622d7e6a.11c69a6032b.-7ffa</con2:id>
+                  <con1:archive ref="Utility/o2framework/o2framework"/>
+                  <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                  <con1:method>public static void logInbound(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$outbound</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$headerValue</con2:xqueryText>
+                  </con1:expr>
+                  <con1:expr>
+                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                  </con1:expr>
+                </con1:javaCallout>
+                <con1:replace varName="body" contents-only="true">
+                  <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-5247063484898311428--2617a4ba.11b415a5ee2.-7fbd</con2:id>
+                  <con1:location>
+                    <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                  </con1:location>
+                  <con1:expr>
+                    <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                      <con2:resource ref="Spa_2_0/transformations/SPABackendFaultToSPAAdapterFault"/>
+                      <con2:param name="operationName">
+                        <con2:path>$operation</con2:path>
+                      </con2:param>
+                      <con2:param name="fault">
+                        <con2:path>$body/soap-env:Fault</con2:path>
+                      </con2:param>
+                      <con2:param name="configXML">
+                        <con2:path>$configXML</con2:path>
+                      </con2:param>
+                      <con2:param name="transactionId">
+                        <con2:path>data($headerValue/xcore:SOATransactionID)</con2:path>
+                      </con2:param>
+                    </con2:xqueryTransform>
+                  </con1:expr>
+                </con1:replace>
+              </con1:actions>
+            </con1:case>
+            <con1:default>
+              <con1:replace contents-only="true" varName="body">
+                <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7395364947879647347--4e4e2709.11c78ddb8d1.-7f73</con2:id>
+                <con1:location>
+                  <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                    <con2:resource ref="Spa_2_0/transformations/AlsbFaultToGetServiceProviderDetailsFault"/>
+                    <con2:param name="fault1">
+                      <con2:path>$fault</con2:path>
+                    </con2:param>
+                    <con2:param name="transactionId">
+                      <con2:path>data($headerValue/xcore:SOATransactionID)</con2:path>
+                    </con2:param>
+                  </con2:xqueryTransform>
+                </con1:expr>
+              </con1:replace>
+            </con1:default>
+          </con1:ifThenElse>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7f9c</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logFault(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, java.lang.String)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$headerValue</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($body/soap-env:Fault/detail/sad:getServiceProviderDetailsFault/xcore:SOAFaultCode)</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/config">
+            <con1:id>_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7f9b</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con1:pipeline>
+    <con1:pipeline type="request" name="Spa_2_0 Common Logging Gateway_request" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+      <con1:stage name="Logging Request">
+        <con1:comment>Logs the body,inbound and header details by invoking
+ O2framework jar(logEntry)method.</con1:comment>
+        <con1:context/>
+        <con1:actions>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ffb</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logEntry(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Get Configuration Data">
+        <con1:comment>Read the Data from the Configuration File</con1:comment>
+        <con1:context>
+          <con1:varNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con1:context>
+        <con1:actions>
+          <con1:javaCallout varName="configData" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ffa</con2:id>
+            <con1:archive ref="Utility/configdatamanagement/configdatamanagement"/>
+            <con1:className>uk.co.o2.soa.sf.xmldata.parsing.impl.ConfigFileManager</con1:className>
+            <con1:method>public static java.lang.String retreiveServiceData(org.apache.xmlbeans.XmlObject)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+          <con1:assign varName="configXML" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ff9</con2:id>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">fn-bea:inlinedXML($configData)/service-config-data/Spa_2_0</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con2:assign varName="headerValue" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ff8</con3:id>
+            <con2:expr>
+              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">$header</con3:xqueryText>
+            </con2:expr>
+          </con2:assign>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="Spa_2_0 Common Logging Gateway_response" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+      <con1:stage name="Logging Response">
+        <con1:comment>Logs the body,inbound and header details,invoking
+ O2framework jar(logExit)method.</con1:comment>
+        <con1:context/>
+        <con1:actions>
+          <con1:javaCallout varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-6006867059875860788-4a3e52fd.128ecc61468.-7ff7</con2:id>
+            <con1:archive ref="Utility/o2framework/o2framework"/>
+            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+            <con1:method>public static org.apache.xmlbeans.XmlObject logExit(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+            </con1:expr>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+          </con1:javaCallout>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:pipeline-node name="Spa_2_0 Common Logging Gateway">
+        <con:comment>Common Logging Gateway logs the request and response ,
+reads the configuration file and stores the header.</con:comment>
+        <con:request>Spa_2_0 Common Logging Gateway_request</con:request>
+        <con:response>Spa_2_0 Common Logging Gateway_response</con:response>
+      </con:pipeline-node>
+      <con:branch-node type="operation" name="SPAAdapterService Gateway">
+        <con:comment>This Service will be used the access the 
+existing Web Service SPA which is a wrapper
+ built over the SPA system. 
+The Service Provider API (SPA) provides key 
+functions to enable third parties and internal 
+O2 systems to query the Service Provider 
+Details based on subscribers MSISDN.</con:comment>
+        <con:context/>
+        <con:branch-table>
+          <con:branch name="getServiceProviderCategories">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:pipeline-node name="GetServiceProviderCategories Gateway">
+                <con:comment>Retrieves the service provider categories based on
+on the subscriber MSISDN.</con:comment>
+                <con:request>GetServiceProviderCategories Gateway_request</con:request>
+                <con:response>GetServiceProviderCategories Gateway_response</con:response>
+              </con:pipeline-node>
+              <con:route-node name="Route To SPA.GetServiceProviderCategories" error-handler="_onErrorHandler-8722420031164256680--25ff1cc7.12234fa8255.-7fa8">
+                <con:comment>Calls the SDP backend(GetServiceProviderCategories)</con:comment>
+                <con:context>
+                  <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                  <con1:userNsDecl namespace="http:/www.o2.com/schema/sdp/service/spa/0.1" prefix="tns" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                  <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                  <con1:routingTable xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                    <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7fb5</con2:id>
+                    <con1:expression>
+                      <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($cachedData)</con2:xqueryText>
+                    </con1:expression>
+                    <con1:case>
+                      <con1:operator>equals</con1:operator>
+                      <con1:value>"NO PAYLOAD"</con1:value>
+                      <con1:route>
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-5456048075194184306--2d3b0c8c.122368f5c0e.-7ffe</con2:id>
+                        <con1:service ref="Spa_2_0/businessservices/Spa_2_0" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        <con1:operation>getServiceProviderCategories</con1:operation>
+                        <con1:outboundTransform>
+                          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7ff8</con2:id>
+                            <con1:location>
+                              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:location>
+                            <con1:expr>
+                              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Spa_2_0/transformations/GetServiceProviderCategoriesRequestNBToSB"/>
+                                <con2:param name="getServiceProviderCategories1">
+                                  <con2:path>$body/spad:getServiceProviderCategories</con2:path>
+                                </con2:param>
+                                <con2:param name="configXML">
+                                  <con2:path>$configXML</con2:path>
+                                </con2:param>
+                                <con2:param name="header">
+                                  <con2:path>$headerValue</con2:path>
+                                </con2:param>
+                              </con2:xqueryTransform>
+                            </con1:expr>
+                          </con1:replace>
+                          <con1:javaCallout varName="" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-486332534768362721--622d7e6a.11c69a6032b.-7ffa</con2:id>
+                            <con1:archive ref="Utility/o2framework/o2framework"/>
+                            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                            <con1:method>public static void logOutbound(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$outbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                            </con1:expr>
+                          </con1:javaCallout>
+                          <con2:replace varName="header" contents-only="true" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7f70</con3:id>
+                            <con2:location>
+                              <con3:xpathText xmlns:con3="http://www.bea.com/wli/sb/stages/config">.</con3:xpathText>
+                            </con2:location>
+                            <con2:expr>
+                              <con3:xqueryTransform xmlns:con3="http://www.bea.com/wli/sb/stages/config">
+                                <con3:resource ref="Spa_2_0/transformations/WLNGRequestHeaderNBToSB"/>
+                                <con3:param name="applicationId">
+                                  <con3:path>data($header/xcore:applicationID)</con3:path>
+                                </con3:param>
+                                <con3:param name="transactionId">
+                                  <con3:path>substring(data($header/xcore:SOATransactionID),xs:integer(data($configXML/minTransactionIDLimit)),xs:integer(data($configXML/maxTransactionIDLimit)))</con3:path>
+                                </con3:param>
+                                <con3:param name="applicationInstanceId">
+                                  <con3:path>data($configXML/applicationInstanceId)</con3:path>
+                                </con3:param>
+                                <con3:param name="customerId">
+                                  <con3:path>data($header/xcore:providerID)</con3:path>
+                                </con3:param>
+                              </con3:xqueryTransform>
+                            </con2:expr>
+                          </con2:replace>
+                          <con1:insert varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7ff9</con2:id>
+                            <con1:location>
+                              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:location>
+                            <con1:where>last-child</con1:where>
+                            <con1:expr>
+                              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Spa_2_0/transformations/SDPRequestHeaderNBToSB"/>
+                                <con2:param name="applicationId">
+                                  <con2:path>if(data($getServiceProviderCategoriesRq/spad:subMerchId)) then
+data($getServiceProviderCategoriesRq/spad:subMerchId)
+else
+concat(data($headerValue/xcore:providerID),data($configXML/delimiter),data($headerValue/xcore:applicationID))</con2:path>
+                                </con2:param>
+                                <con2:param name="applicationReferenceId">
+                                  <con2:path>if(string-length(data($getServiceProviderCategoriesRq/spad:applicationReference))=xs:integer(data($configXML/maxApplicationReferenceLimit))) then
+data($getServiceProviderCategoriesRq/spad:applicationReference)
+else if(string-length(data($getServiceProviderCategoriesRq/spad:applicationReference))>xs:integer(data($configXML/maxApplicationReferenceLimit))) then
+substring(data($getServiceProviderCategoriesRq/spad:applicationReference),xs:integer(data($configXML/minApplicationReferenceLimit)),xs:integer(data($configXML/maxApplicationReferenceLimit)))
+else
+substring(data($headerValue/xcore:SOATransactionID),xs:integer(data($configXML/minApplicationReferenceLimit)),xs:integer(data($configXML/maxApplicationReferenceLimit)))</con2:path>
+                                </con2:param>
+                              </con2:xqueryTransform>
+                            </con1:expr>
+                          </con1:insert>
+                        </con1:outboundTransform>
+                        <con1:responseTransform>
+                          <con2:replace contents-only="false" varName="header" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-5133905778574383037-1984b64.11c751e58c6.-7ff4</con3:id>
+                            <con2:location>
+                              <con3:xpathText xmlns:con3="http://www.bea.com/wli/sb/stages/config">.</con3:xpathText>
+                            </con2:location>
+                            <con2:expr>
+                              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">$headerValue</con3:xqueryText>
+                            </con2:expr>
+                          </con2:replace>
+                          <con1:javaCallout varName="" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-486332534768362721--622d7e6a.11c69a6032b.-7ffa</con2:id>
+                            <con1:archive ref="Utility/o2framework/o2framework"/>
+                            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                            <con1:method>public static void logInbound(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$outbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                            </con1:expr>
+                          </con1:javaCallout>
+                          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7fe3</con2:id>
+                            <con1:location>
+                              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:location>
+                            <con1:expr>
+                              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Spa_2_0/transformations/GetServiceProviderCategoriesResponseSBToNB"/>
+                                <con2:param name="getServiceProviderCategoriesResponse1">
+                                  <con2:path>$body/tns:getServiceProviderCategoriesResponse</con2:path>
+                                </con2:param>
+                              </con2:xqueryTransform>
+                            </con1:expr>
+                          </con1:replace>
+                        </con1:responseTransform>
+                      </con1:route>
+                    </con1:case>
+                  </con1:routingTable>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="getServiceProviderDetails">
+            <con:operator>equals</con:operator>
+            <con:value/>
+            <con:flow>
+              <con:pipeline-node name="GetServiceProviderDetails Gateway">
+                <con:comment>Retrieves the service provider details based on
+on the subscriber MSISDN.</con:comment>
+                <con:request>GetServiceProviderDetails Gateway_request</con:request>
+                <con:response>GetServiceProviderDetails Gateway_response</con:response>
+              </con:pipeline-node>
+              <con:route-node name="Route To SPA.GetServiceProviderDetails" error-handler="_onErrorHandler-8722420031164256680--25ff1cc7.12234fa8255.-7f9a">
+                <con:comment>Routes the request to SDP backend(GetServiceProviderDeatails).</con:comment>
+                <con:context>
+                  <con1:userNsDecl namespace="http://soa.o2.co.uk/sdp/spadata_2" prefix="spad" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                  <con1:userNsDecl namespace="http://soa.o2.co.uk/coredata_1" prefix="xcore" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                  <con1:userNsDecl namespace="http:/www.o2.com/schema/sdp/service/spa/0.1" prefix="tns" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                  <con1:routingTable xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                    <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7fa2</con2:id>
+                    <con1:expression>
+                      <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">data($cachedData)</con2:xqueryText>
+                    </con1:expression>
+                    <con1:case>
+                      <con1:operator>equals</con1:operator>
+                      <con1:value>"NO PAYLOAD"</con1:value>
+                      <con1:route>
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-5456048075194184306--2d3b0c8c.122368f5c0e.-7ffd</con2:id>
+                        <con1:service ref="Spa_2_0/businessservices/Spa_2_0" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        <con1:operation>getServiceProviderDetails</con1:operation>
+                        <con1:outboundTransform>
+                          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7f87</con2:id>
+                            <con1:location>
+                              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:location>
+                            <con1:expr>
+                              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Spa_2_0/transformations/GetServiceProviderDetailsRequestNBToSB"/>
+                                <con2:param name="getServiceProviderDetails1">
+                                  <con2:path>$body/spad:getServiceProviderDetails</con2:path>
+                                </con2:param>
+                                <con2:param name="configXML">
+                                  <con2:path>$configXML</con2:path>
+                                </con2:param>
+                                <con2:param name="header">
+                                  <con2:path>$headerValue</con2:path>
+                                </con2:param>
+                              </con2:xqueryTransform>
+                            </con1:expr>
+                          </con1:replace>
+                          <con1:javaCallout varName="" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-486332534768362721--622d7e6a.11c69a6032b.-7ffa</con2:id>
+                            <con1:archive ref="Utility/o2framework/o2framework"/>
+                            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                            <con1:method>public static void logOutbound(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$outbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                            </con1:expr>
+                          </con1:javaCallout>
+                          <con2:replace varName="header" contents-only="true" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-8722420031164256680--25ff1cc7.12234fa8255.-7f70</con3:id>
+                            <con2:location>
+                              <con3:xpathText xmlns:con3="http://www.bea.com/wli/sb/stages/config">.</con3:xpathText>
+                            </con2:location>
+                            <con2:expr>
+                              <con3:xqueryTransform xmlns:con3="http://www.bea.com/wli/sb/stages/config">
+                                <con3:resource ref="Spa_2_0/transformations/WLNGRequestHeaderNBToSB"/>
+                                <con3:param name="applicationId">
+                                  <con3:path>data($header/xcore:applicationID)</con3:path>
+                                </con3:param>
+                                <con3:param name="transactionId">
+                                  <con3:path>substring(data($header/xcore:SOATransactionID),xs:integer(data($configXML/minTransactionIDLimit)),xs:integer(data($configXML/maxTransactionIDLimit)))</con3:path>
+                                </con3:param>
+                                <con3:param name="applicationInstanceId">
+                                  <con3:path>data($configXML/applicationInstanceId)</con3:path>
+                                </con3:param>
+                                <con3:param name="customerId">
+                                  <con3:path>data($header/xcore:providerID)</con3:path>
+                                </con3:param>
+                              </con3:xqueryTransform>
+                            </con2:expr>
+                          </con2:replace>
+                          <con1:insert varName="header" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7ff9</con2:id>
+                            <con1:location>
+                              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:location>
+                            <con1:where>last-child</con1:where>
+                            <con1:expr>
+                              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Spa_2_0/transformations/SDPRequestHeaderNBToSB"/>
+                                <con2:param name="applicationId">
+                                  <con2:path>if(data($getServiceProviderDetailsRq/spad:subMerchId)) then
+data($getServiceProviderDetailsRq/spad:subMerchId)
+else
+concat(data($headerValue/xcore:providerID),data($configXML/delimiter),data($headerValue/xcore:applicationID))</con2:path>
+                                </con2:param>
+                                <con2:param name="applicationReferenceId">
+                                  <con2:path>if(string-length(data($getServiceProviderDetailsRq/spad:applicationReference))=xs:integer(data($configXML/maxApplicationReferenceLimit))) then
+data($getServiceProviderDetailsRq/spad:applicationReference)
+else if(string-length(data($getServiceProviderDetailsRq/spad:applicationReference))>xs:integer(data($configXML/maxApplicationReferenceLimit))) then
+substring(data($getServiceProviderDetailsRq/spad:applicationReference),xs:integer(data($configXML/minApplicationReferenceLimit)),xs:integer(data($configXML/maxApplicationReferenceLimit)))
+else
+substring(data($headerValue/xcore:SOATransactionID),xs:integer(data($configXML/minApplicationReferenceLimit)),xs:integer(data($configXML/maxApplicationReferenceLimit)))</con2:path>
+                                </con2:param>
+                              </con2:xqueryTransform>
+                            </con1:expr>
+                          </con1:insert>
+                        </con1:outboundTransform>
+                        <con1:responseTransform>
+                          <con2:replace contents-only="false" varName="header" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-5133905778574383037-1984b64.11c751e58c6.-7ff4</con3:id>
+                            <con2:location>
+                              <con3:xpathText xmlns:con3="http://www.bea.com/wli/sb/stages/config">.</con3:xpathText>
+                            </con2:location>
+                            <con2:expr>
+                              <con3:xqueryText xmlns:con3="http://www.bea.com/wli/sb/stages/config">$headerValue</con3:xqueryText>
+                            </con2:expr>
+                          </con2:replace>
+                          <con1:javaCallout varName="" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-486332534768362721--622d7e6a.11c69a6032b.-7ffa</con2:id>
+                            <con1:archive ref="Utility/o2framework/o2framework"/>
+                            <con1:className>uk.co.o2.soa.sf.o2fwk.impl.O2Framework</con1:className>
+                            <con1:method>public static void logInbound(org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject, org.apache.xmlbeans.XmlObject)</con1:method>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$outbound</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$header</con2:xqueryText>
+                            </con1:expr>
+                            <con1:expr>
+                              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                            </con1:expr>
+                          </con1:javaCallout>
+                          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-7835478755480183626--2a2f186d.11b4963c0d8.-7f84</con2:id>
+                            <con1:location>
+                              <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:location>
+                            <con1:expr>
+                              <con2:xqueryTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Spa_2_0/transformations/GetServiceProviderDetailsResponseSBToNB"/>
+                                <con2:param name="getServiceProviderDetailsResponse1">
+                                  <con2:path>$body/tns:getServiceProviderDetailsResponse</con2:path>
+                                </con2:param>
+                              </con2:xqueryTransform>
+                            </con1:expr>
+                          </con1:replace>
+                        </con1:responseTransform>
+                      </con1:route>
+                    </con1:case>
+                  </con1:routingTable>
+                </con:actions>
+              </con:route-node>
+            </con:flow>
+          </con:branch>
+          <con:default-branch>
+            <con:flow/>
+          </con:default-branch>
+        </con:branch-table>
+      </con:branch-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

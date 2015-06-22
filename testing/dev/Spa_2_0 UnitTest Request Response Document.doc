@@ -1,0 +1,1351 @@
+
+Operation Name :getServiceProviderCategories
+TestCase  1 :Success Case
+
+Test Step 1 : Spa_2_0_getServiceProviderCategories_UT_001
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447711223314</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>spidDescription</spad:spidDescription>
+         <spad:spid>45</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>MVNO TESCO</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk1</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 2 : Spa_2_0_getServiceProviderCategories_UT_002
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1"></cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447711223314</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">78433112-e2d7-4827-bffb-760a4757ad59</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>spidDescription</spad:spidDescription>
+         <spad:spid>45</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>MVNO TESCO</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk1</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 3 : Spa_2_0_getServiceProviderCategories_UT_003
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447552678900</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">c801f536-dd9f-434b-9394-1adf7b18d905</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>spidDescription</spad:spidDescription>
+         <spad:spid>45</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>MVNO TESCO</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk1</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 4 : Spa_2_0_getServiceProviderCategories_UT_004
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447711223314</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">7ccc95f9-3627-477d-882e-729b2fef07cb</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>spidDescription</spad:spidDescription>
+         <spad:spid>45</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>MVNO TESCO</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk1</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 5 : Spa_2_0_getServiceProviderCategories_UT_005
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223314</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">3db060bb-afa8-45e1-ba79-44573c900cf4</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>235</spad:spid>
+         <spad:paymentType>PREPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>CONSUMER</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk3</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 6 : Spa_2_0_getServiceProviderCategories_UT_006
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223316</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">fdfe46a4-7a33-43c2-a747-d1cfc54f1929</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>235</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud3</spad:barringCodes>
+         <spad:category>CORPORATE</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk4</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 7 : Spa_2_0_getServiceProviderCategories_UT_007
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223317</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">98b989f1-a430-4126-8c02-5e6cb892d990</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>235</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud3</spad:barringCodes>
+         <spad:category>SME</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk4</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 8 : Spa_2_0_getServiceProviderCategories_UT_008
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447552678900</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">284e2ec5-d740-4fd3-aeae-f847344a2551</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>spidDescription</spad:spidDescription>
+         <spad:spid>45</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>MVNO TESCO</spad:category>
+         <spad:status>A</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk1</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 9 : Spa_2_0_getServiceProviderCategories_UT_009
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223315</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">71d75263-4974-4659-a4b2-7b9d86d39877</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>235</spad:spid>
+         <spad:paymentType>PREPAY</spad:paymentType>
+         <spad:barringCodes>ud2</spad:barringCodes>
+         <spad:category>CONSUMER</spad:category>
+         <spad:status>D</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk3</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 10 : Spa_2_0_getServiceProviderCategories_UT_010
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223318</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">73170517-1180-4da4-a0d6-19e8d409dc56</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>235</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud3</spad:barringCodes>
+         <spad:category>CORPORATE</spad:category>
+         <spad:status>D</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk4</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 11 : Spa_2_0_getServiceProviderCategories_UT_011
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223319</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">03a3a7c8-09d6-4d51-861b-43ecebd3eee2</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>235</spad:spid>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:barringCodes>ud3</spad:barringCodes>
+         <spad:category>SME</spad:category>
+         <spad:status>D</spad:status>
+         <spad:operatorID>O2</spad:operatorID>
+         <spad:puk>puk4</spad:puk>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 12 : Spa_2_0_getServiceProviderCategories_UT_012
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223320</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">c18d341d-dd26-4e49-bdd9-1b40be76652c</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>444</spad:spid>
+         <spad:paymentType>UNKNOWN</spad:paymentType>
+         <spad:barringCodes>ud3</spad:barringCodes>
+         <spad:category/>
+         <spad:status/>
+         <spad:operatorID>nonO2</spad:operatorID>
+         <spad:puk/>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 13 : Spa_2_0_getServiceProviderCategories_UT_013
+Request :
+
+<!--Success Case with msisdn and applicationReference-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <spad:msisdn>447811223320</spad:msisdn>
+         <!--Optional:-->
+         <spad:applicationReference>1234567890</spad:applicationReference>
+         <!--Optional:-->
+         <spad:subMerchId>123</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:spidDescription>servicefactory</spad:spidDescription>
+         <spad:spid>444</spad:spid>
+         <spad:paymentType>UNKNOWN</spad:paymentType>
+         <spad:barringCodes>ud3</spad:barringCodes>
+         <spad:category/>
+         <spad:status/>
+         <spad:operatorID>nonO2</spad:operatorID>
+         <spad:puk/>
+      </spad:getServiceProviderCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+TestCase  2 :Fault Case
+
+Test Step 1 : Spa_2_0_getServiceProviderCategories_UT_014
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07323457281</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>backend fault</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN is invalid</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 2 : Spa_2_0_getServiceProviderCategories_UT_015
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07323457281</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">610afd67-4a47-47e4-8019-550b0e96223e</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>backend fault</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN is invalid</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">610afd67-4a47-47e4-8019-550b0e96223e</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 3 : Spa_2_0_getServiceProviderCategories_UT_016
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07323457281</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">d6cafc37-f12a-4dde-8e14-942fe54e1146</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>backend fault</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN is invalid</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">d6cafc37-f12a-4dde-8e14-942fe54e1146</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 4 : Spa_2_0_getServiceProviderCategories_UT_017
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07323457281</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">c38958c5-6d23-4c49-9b5e-5b78287c791c</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>backend fault</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN is invalid</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">c38958c5-6d23-4c49-9b5e-5b78287c791c</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 5 : Spa_2_0_getServiceProviderCategories_UT_018
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447463756748</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">e9871221-0e2f-4950-9d4e-604d6fb504d5</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>None of the ReqMatch criteria were satisfied in WebServicesSim.conf in [/usr/o2/wlapp/simconfig/ServiceFactory/sdp/spa_2_0/]</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1"/>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1"/>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">e9871221-0e2f-4950-9d4e-604d6fb504d5</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 6 : Spa_2_0_getServiceProviderCategories_UT_019
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447323457555</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">be61e03c-9308-410e-8736-ee3d13e725c9</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>None of the ReqMatch criteria were satisfied in WebServicesSim.conf in [/usr/o2/wlapp/simconfig/ServiceFactory/sdp/spa_2_0/]</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1"/>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1"/>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">be61e03c-9308-410e-8736-ee3d13e725c9</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 7 : Spa_2_0_getServiceProviderCategories_UT_020
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447323457281</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">bf94ee84-e01e-4e2b-bc8e-d062cf682edc</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>None of the ReqMatch criteria were satisfied in WebServicesSim.conf in [/usr/o2/wlapp/simconfig/ServiceFactory/sdp/spa_2_0/]</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1"/>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1"/>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">bf94ee84-e01e-4e2b-bc8e-d062cf682edc</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+TestCase  3 :Failure Case
+
+Test Step 1 : Spa_2_0_getServiceProviderCategories_UT_021
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+    <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>ALSB Validate action failed validation</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault>
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Validate GetServiceProviderCategories Request</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">BEA-382505</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">ALSB Validate action failed validation</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 2 : Spa_2_0_getServiceProviderCategories_UT_022
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223319</spad:msisdn>
+         <spad:msisdn>447811223319</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>ALSB Validate action failed validation</faultstring>
+         <detail>
+            <spad:getServiceProviderCategoriesFault>
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Validate GetServiceProviderCategories Request</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">BEA-382505</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">ALSB Validate action failed validation</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+            </spad:getServiceProviderCategoriesFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+Operation Name :getServiceProviderDetails
+TestCase  1 :Success Case
+
+Test Step 1 : Spa_2_0_getServiceProviderDetails_UT_001
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447711223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">O2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 2 : Spa_2_0_getServiceProviderDetails_UT_002
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">  </cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>442211223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1"></cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 3 : Spa_2_0_getServiceProviderDetails_UT_003
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447711223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">44ba5ad6-6deb-40bf-995d-afdb6c743220</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 4 : Spa_2_0_getServiceProviderDetails_UT_004
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447711223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">976c29d2-193d-48e4-987f-780652695224</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 5 : Spa_2_0_getServiceProviderDetails_UT_005
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">0738538e-462f-464b-a8fa-dc6621b28172</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>PREPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 6 : Spa_2_0_getServiceProviderDetails_UT_006
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223316</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">f85864d8-2aa4-4b92-8b45-e20234430cd9</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 7 : Spa_2_0_getServiceProviderDetails_UT_007
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223317</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">d14b43fe-17ff-4de0-a674-6b53deed483d</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 8 : Spa_2_0_getServiceProviderDetails_UT_008
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447552678900</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">6d3387ca-f1bc-4d18-82a7-4cb8dea91ddf</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 9 : Spa_2_0_getServiceProviderDetails_UT_009
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223315</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">08ed042d-6653-442c-b198-8c5e244f1174</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 10 : Spa_2_0_getServiceProviderDetails_UT_010
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223318</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">1121390b-dad3-423b-9681-740142daceee</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 11 : Spa_2_0_getServiceProviderDetails_UT_011
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447811223319</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">85a13618-23f0-4c24-882c-95eeee4496b3</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>POSTPAY</spad:paymentType>
+         <spad:operatorID>O2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 12 : Spa_2_0_getServiceProviderDetails_UT_012
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>445511223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">dc798b3d-4ff5-4667-991d-d5dbc016d94c</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+         <spad:code>SPA0000S</spad:code>
+         <spad:description>The request is completed successfully</spad:description>
+         <spad:paymentType>UNKNOWN</spad:paymentType>
+         <spad:operatorID>nonO2</spad:operatorID>
+      </spad:getServiceProviderDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+TestCase  2 :Fault Case
+
+Test Step 1 : Spa_2_0_getServiceProviderDetails_UT_013
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07711223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">90c1400b-a9c2-482b-a46f-16c0ed65153d</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>backend fault</faultstring>
+         <detail>
+            <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001F</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed.The parameter MSISDN is Invalid</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">90c1400b-a9c2-482b-a46f-16c0ed65153d</cor:SOATransactionID>
+            </spad:getServiceProviderDetailsFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 2 : Spa_2_0_getServiceProviderDetails_UT_014
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07711223314</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">c2221b56-0011-4bba-9489-0fc84eec97e4</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>backend fault</faultstring>
+         <detail>
+            <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001F</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed.The parameter MSISDN is Invalid</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">c2221b56-0011-4bba-9489-0fc84eec97e4</cor:SOATransactionID>
+            </spad:getServiceProviderDetailsFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+TestCase  3 :Failure Case
+
+Test Step 1 : Spa_2_0_getServiceProviderDetails_UT_015
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+      <cor:originatorIP xmlns:cor="http://soa.o2.co.uk/coredata_1">127.0.0.1</cor:originatorIP>
+   </soap:Header>
+   <soapenv:Body xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>ALSB Validate action failed validation</faultstring>
+         <detail>
+            <spad:getServiceProviderDetailsFault>
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Validate GetServiceProviderDetails Request</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">BEA-382505</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">ALSB Validate action failed validation</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">AAA-BBB-CCC-DDD</cor:SOATransactionID>
+            </spad:getServiceProviderDetailsFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Test Step 2 : Spa_2_0_getServiceProviderDetails_UT_016
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <cor:applicationID xmlns:cor="http://soa.o2.co.uk/coredata_1">KNOWN</cor:applicationID>
+      <cor:providerID xmlns:cor="http://soa.o2.co.uk/coredata_1">SO2</cor:providerID>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1"></cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447552678900</spad:msisdn>
+         <spad:msisdn>447552678900</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">6e100b73-e22d-4f86-9fd7-736ab7bb9905</cor:SOATransactionID>
+   </soap:Header>
+   <soapenv:Body xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <soapenv:Fault>
+         <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+         <faultstring>ALSB Validate action failed validation</faultstring>
+         <detail>
+            <spad:getServiceProviderDetailsFault>
+               <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Validate GetServiceProviderDetails Request</cor:SOAFaultOriginator>
+               <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">BEA-382505</cor:SOAFaultCode>
+               <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">ALSB Validate action failed validation</cor:faultDescription>
+               <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">6e100b73-e22d-4f86-9fd7-736ab7bb9905</cor:SOATransactionID>
+            </spad:getServiceProviderDetailsFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+

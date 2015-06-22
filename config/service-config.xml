@@ -1,0 +1,13 @@
+<service-config-envelope>
+   <service-config-data>
+      <Spa_2_0>
+         <minApplicationReferenceLimit>1</minApplicationReferenceLimit>
+         <maxApplicationReferenceLimit>30</maxApplicationReferenceLimit>
+         <minTransactionIDLimit>1</minTransactionIDLimit>
+         <maxTransactionIDLimit>30</maxTransactionIDLimit>
+         <applicationInstanceId>ALSB</applicationInstanceId>
+		 <originator>Spa</originator>
+         <delimiter>_</delimiter>
+      </Spa_2_0>
+   </service-config-data>
+</service-config-envelope>

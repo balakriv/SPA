@@ -1,0 +1,1836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="Spa_2_0_test " soapui-version="2.0.2" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="ProjectSettings@projectRoot">D:\Backup\2010SF\viewserviceproviderdetails\spa_2_0</con:setting></con:settings><con:interface name="SpaBinding" bindingName="{http://soa.o2.co.uk/sdp/spaservice_2}SpaBinding" soapVersion="1_1" definition="file:D:\Backup\2010SF\viewserviceproviderdetails\spa_2_0\schema\spaservice_2_0.wsdl"><con:settings/><con:endpoints><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getServiceProviderCategories" bindingOperationName="getServiceProviderCategories" inputName="getServiceProviderCategories" outputName="getServiceProviderCategoriesResponse" receivesAttachments="false" sendsAttachments="false"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request></con:call></con:operation><con:operation isOneWay="false" action="" name="getServiceProviderDetails" bindingOperationName="getServiceProviderDetails" inputName="getServiceProviderDetails" outputName="getServiceProviderDetailsResponse" receivesAttachments="false" sendsAttachments="false"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request></con:call></con:operation><con:definitionCache rootPart="file:D:\Backup\2010SF\viewserviceproviderdetails\spa_2_0\schema\spaservice_2_0.wsdl" type="TEXT"><con:part><con:url>file:D:\Backup\2010SF\viewserviceproviderdetails\spa_2_0\schema\coredata_1_1.xsd</con:url><con:content><![CDATA[<!--Date            Version       Author            	 Change Description
+
+	18/08/2009  	1.0.3         Karthikeyan R D       Added types for bank account number, sort code and account holder name.
+	25/06/2009  	1.0.2         Venkata Karhtik      	Added types for credit/debit card related elements, customerTier,emailAddressType and postcode
+	12/04/2008  	1.0.1         Kapil Gosian       	Initial version-->
+<xsd:schema targetNamespace="http://soa.o2.co.uk/coredata_1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xcore="http://soa.o2.co.uk/coredata_1">
+  <xsd:complexType name="SOAFaultType">
+    <xsd:annotation>
+      <xsd:documentation>The type of the response sent to the calling application, if something goes wrong.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="xcore:SOAFaultOriginator"/>
+      <xsd:element ref="xcore:SOAFaultCode"/>
+      <xsd:element name="faultDescription" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>A human readable description of the error.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="faultTrace" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>A computer generated dump of the fault (may help in debugging problems).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="xcore:SOATransactionID" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SOAFault" type="xcore:SOAFaultType">
+    <xsd:annotation>
+      <xsd:documentation>The response sent to the calling application, if something goes wrong.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="SOAFaultCode" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>A numeric representation of a fault (should be included in errors.xml).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="SOAFaultOriginator" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>A representation of where a fault originates (should be included in errors.xml).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="SOATransactionID" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>The transaction ID generated by the ESB.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="SOAConsumerTransactionID" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>A transaction ID supplied by the calling aplication. It will not be processed but is passed through and logged by all underlying services (aids in debugging problems).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="msisdnType">
+    <xsd:annotation>
+      <xsd:documentation>Mobile Phone numbers (MSISDNs) should always be defined as strings, including country codes i.e. "447734123456"; and translated into localised formats on the presentation and backend layers.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="billingAccountNumberType">
+    <xsd:annotation>
+      <xsd:documentation>A billing account, as it appears in the back end billing system (Companion).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="6"/>
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="portalIDType">
+    <xsd:annotation>
+      <xsd:documentation>A portal account, normally in the form "john.smith@o2.co.uk".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="accountType">
+    <xsd:annotation>
+      <xsd:documentation>Data type to define a customers account. This could be either a portal account, msisdn, or a companion account and msisdn. Or a Bank Account program ID and account ID (initially for Timberlake)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="portalID" type="xcore:portalIDType">
+        <xsd:annotation>
+          <xsd:documentation>A portal account, normally in the form "john.smith@o2.co.uk".</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="msisdn" type="xcore:msisdnType">
+        <xsd:annotation>
+          <xsd:documentation>A msisdn, in international format i.e. "447712345678"</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="accountDetail" type="xcore:accountDetail">
+        <xsd:annotation>
+          <xsd:documentation>Account Details</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="accountDetail">
+    <xsd:annotation>
+      <xsd:documentation>Account Details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="billingAccountType">
+        <xsd:annotation>
+          <xsd:documentation>The type of account as it is defined in the billing system (only "MOBILE" currently defined).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="MOBILE"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="accountNumber" type="xcore:billingAccountNumberType">
+        <xsd:annotation>
+          <xsd:documentation>The companion account.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="msisdn" type="xcore:msisdnType">
+        <xsd:annotation>
+          <xsd:documentation>The msisdn within the above account.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="customerIDType">
+    <xsd:annotation>
+      <xsd:documentation>Main customerID for online services - this is the o2BFid in CPDS at the moment</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="cashCardAccountType">
+    <xsd:annotation>
+      <xsd:documentation>Uniquely identifies the account in the Prepaid Banking system that is being referred to.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:annotation>
+        <xsd:documentation>Financial accounts need a programID and accountID (Ref: Timberlake)</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="programID" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Identifies program. Translates into "Smart" or "Freedom" with various limits</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="accountID" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Unique internal account ID on the TSYS platform. Probably can be applied to other banking systems as well.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="userID" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="cardID" type="xsd:long" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="productIDType">
+    <xsd:annotation>
+      <xsd:documentation>Identifies a product - temporarily the same as o2BFID (and hence customer ID)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="customerRoleType">
+    <xsd:annotation>
+      <xsd:documentation>The role concept from registration DB or A and R</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="admin"/>
+      <xsd:enumeration value="user"/>
+      <xsd:enumeration value="chooser"/>
+      <xsd:enumeration value="superuser"/>
+      <xsd:enumeration value="unknown"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="imsiType">
+    <xsd:annotation>
+      <xsd:documentation>IMSI Number</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="imeiType">
+    <xsd:annotation>
+      <xsd:documentation>IMEI Number</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:element name="subscriberProfile" type="xcore:SubscriberProfileType">
+    <xsd:annotation>
+      <xsd:documentation>Subscriber Profile Element</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="SubscriberProfileType">
+    <xsd:annotation>
+      <xsd:documentation>Complex Type that defines Subscriber Profile</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="xcore:SubscriberID">
+        <xsd:annotation>
+          <xsd:documentation>This refers to the MSISDN for Mobile subscribers</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="xcore:Operator" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Operator ID for the particular subscriber</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="xcore:PaymentCategory" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Type of payment, Prepay of Postpay</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="xcore:Segment" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Segment of Subscriber, corporate, consumer, ISP etc.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="channel" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ServiceProviderID" type="xsd:long" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>SPID which is a unique value for the type of O2 Service Provider like Tesco, CPW etc.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Status" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Operator" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>O2 UK, Tesco or Other normally</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Segment" type="xcore:SegmentType">
+    <xsd:annotation>
+      <xsd:documentation>The P and L definition of Consumer/SME/Corp</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="SegmentType">
+    <xsd:annotation>
+      <xsd:documentation>main ones listed - could be others</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Consumer"/>
+      <xsd:enumeration value="SME"/>
+      <xsd:enumeration value="Corporate"/>
+      <xsd:enumeration value="ISP"/>
+      <xsd:enumeration value="Unknown"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="Channel" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>The sales channel that owns the subscriber</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="SubscriberID" type="xcore:msisdnType">
+    <xsd:annotation>
+      <xsd:documentation>Subscriber ID that is unique identifier of the subscriber eg: MSISDN no is subscriberID for Mobile users</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PaymentCategory" type="xcore:PaymentCategoryType">
+    <xsd:annotation>
+      <xsd:documentation>Divides between pay and go/pay monthly</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="PaymentCategoryType">
+    <xsd:annotation>
+      <xsd:documentation>two values postpay or prepay</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Prepay"/>
+      <xsd:enumeration value="Postpay"/>
+      <xsd:enumeration value="Unknown"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ServiceResultType">
+    <xsd:annotation>
+      <xsd:documentation>This data type represents the status recieved from a service for a task that might be earlier assigned to that service.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="statusCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique code assigned to the status from the service. A set of status codes can be defined for services based on the context.
+				                   A stausCode will be suffixed with "S" for success, "F" for failure and "E" for Error and "P" for Pending to describe the type of status recieved from service.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="externalDescription" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A description of status in human-readble form that has to be sent to the end-user.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="internalDescription" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>This is an optional description of the status which is meant for logging purpose. This may contain the java stack trace or Database error trace based on the context.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MapItem">
+    <xsd:annotation>
+      <xsd:documentation>An individual Item that carries key-value pair for extensible properties</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="key" type="xsd:string"/>
+      <xsd:choice>
+        <xsd:annotation>
+          <xsd:documentation>Only the relevant elemt is populated based on the type of the parameter.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:element name="intValue" type="xsd:integer"/>
+        <xsd:element name="strValue" type="xsd:string"/>
+        <xsd:element name="boolValue" type="xsd:boolean"/>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MapType">
+    <xsd:annotation>
+      <xsd:documentation>A generic extensible complex type that can be used to send multiple name-value pairs</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="mapItem" type="xcore:MapItem" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="StatusCodeType">
+    <xsd:annotation>
+      <xsd:documentation>This is borrowed from SPML definition of a status code - the pending status is  a bit debatable</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="success"/>
+      <xsd:enumeration value="failure"/>
+      <xsd:enumeration value="error"/>
+      <xsd:enumeration value="pending"/>
+      <xsd:enumeration value="expired"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="applicationID" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>applicationID is part of request identifier handled by SOA Access Gateway. Application ID uniquely identifies the name of consuming application. Example - DASHB, IVR, WAP, etc</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="providerID" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>providerID is also part of request identifier handled by SOA Access Gateway. Provider ID identifies the company that provides a functionality to end customers by invoking this specific service. Example - O2, Tesco, Car Phone Warehouse</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="originatorIP" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>This parameter indicates the IP address of the originating system. This parameter will be added by the SOA Access Gateway</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="mobileAccessIdType">
+    <xsd:annotation>
+      <xsd:documentation>Mobile Access Id is Hash id which is same as the UID generated by Wap Gateway</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:element name="debugFlag" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>This parameter indicates whether we should log or not, Used for debugging perspective from a Support Perspective.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:simpleType name="cardHolderNameType">
+    <xsd:annotation>
+      <xsd:documentation>The customer name on the Credit or Debit Card</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="cardIssueDateType">
+    <xsd:annotation>
+      <xsd:documentation>The date when the card was issued. In MM/YY format.
+       		It is important that the month comes first followed by the year.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="5"/>
+      <xsd:pattern value="\d{2}/\d{2}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="cardExpiryDateType">
+    <xsd:annotation>
+      <xsd:documentation>The card expiry date. In MM/YY format.
+       		It is important that the month comes first followed by the year.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="5"/>
+      <xsd:pattern value="\d{2}/\d{2}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="cardNumberType">
+    <xsd:annotation>
+      <xsd:documentation>The Credit/Debit Card Number(without spaces)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="\d{12,20}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="cardCV2Type">
+    <xsd:annotation>
+      <xsd:documentation>The verification number printed on the back of the credit/debit card.
+			The CardCV2 usually  a 3 or 4 digit code on the back of card.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="5"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="cardIssueNumberType">
+    <xsd:annotation>
+      <xsd:documentation>The Credit or Debit Card Issue Number</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="cardIssuerType">
+    <xsd:annotation>
+      <xsd:documentation>The Bank Card Issuer</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="MAESTRO"/>
+      <xsd:enumeration value="SOLO"/>
+      <xsd:enumeration value="VISA"/>
+      <xsd:enumeration value="MASTERCARD"/>
+      <xsd:enumeration value="DELTA"/>
+      <xsd:enumeration value="AMEX"/>
+      <xsd:enumeration value="ELECTRON"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="customerTierType">
+    <xsd:annotation>
+      <xsd:documentation>Customer friendly description for various segmentation keys.
+        		Allowed values are Platinum, Gold, Silver, Bronze, Blue, Unknown
+				
+				Segmentation Key		Customer Tier value
+				Platinum				Platinum
+				Gold					Gold
+				Silver					Silver
+				Bronze					Bronze
+				Select					Gold
+				none					Blue
+				Sel_Inv					Silver
+				Sel_Few					Platinum</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Platinum"/>
+      <xsd:enumeration value="Gold"/>
+      <xsd:enumeration value="Silver"/>
+      <xsd:enumeration value="Bronze"/>
+      <xsd:enumeration value="Blue"/>
+      <xsd:enumeration value="Unknown"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="emailAddressType">
+    <xsd:annotation>
+      <xsd:documentation>The email address</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="postcodeType">
+    <xsd:annotation>
+      <xsd:documentation>The Postcode</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <!--v1.0.3: Adding bank related information-->
+  <xsd:simpleType name="bankAccountNumberType">
+    <xsd:annotation>
+      <xsd:documentation>The Bank Account number</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="bankSortCodeType">
+    <xsd:annotation>
+      <xsd:documentation>The Bank Sort code.(Ex:40-42-08)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="8"/>
+      <xsd:maxLength value="8"/>
+      <xsd:pattern value="\d{2}(-)\d{2}(-)\d{2}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="bankAccountHolderNameType">
+    <xsd:annotation>
+      <xsd:documentation>The Bank Account holder name.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <!--v1.0.3: Ends-->
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:D:\Backup\2010SF\viewserviceproviderdetails\spa_2_0\schema\spadata_2_0.xsd</con:url><con:content><![CDATA[<!--Date            	Change#       	Author            	Change Description-->
+<!--03/03/2010  		1.0.1         		Subramanyam	Added optional elements applicationReference & subMerchant in request of 
+																			getServiceProviderDetails &  getServiceProviderCategories-->
+<!--24/06/2008  		1.0.0         		Manasa			Initial Version-->
+<xsd:schema targetNamespace="http://soa.o2.co.uk/sdp/spadata_2" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xcore="http://soa.o2.co.uk/coredata_1" xmlns:sad="http://soa.o2.co.uk/sdp/spadata_2">
+  <xsd:import namespace="http://soa.o2.co.uk/coredata_1" schemaLocation="coredata_1_1.xsd"/>
+  <xsd:element name="getServiceProviderDetails" type="sad:getServiceProviderDetails">
+    <xsd:annotation>
+      <xsd:documentation>Request to get the service provider details</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="getServiceProviderDetails">
+    <xsd:annotation>
+      <xsd:documentation>Request to get the service provider details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="msisdn" type="xcore:msisdnType"/>
+      <xsd:element name="applicationReference" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="subMerchId" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getServiceProviderDetailsResponse" type="sad:getServiceProviderDetailsResponse">
+    <xsd:annotation>
+      <xsd:documentation>Service provider details Response</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="getServiceProviderDetailsResponse">
+    <xsd:annotation>
+      <xsd:documentation>Service provider details Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="code" type="xsd:string"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="paymentType" type="xsd:string"/>
+      <xsd:element name="operatorID" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getServiceProviderDetailsFault" type="xcore:SOAFaultType">
+    <xsd:annotation>
+      <xsd:documentation>Service provider details Fault</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="getServiceProviderCategories" type="sad:getServiceProviderCategories">
+    <xsd:annotation>
+      <xsd:documentation>Request to get the service provider categories details</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="getServiceProviderCategories">
+    <xsd:annotation>
+      <xsd:documentation>Request to get the service provider categories details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="msisdn" type="xcore:msisdnType"/>
+      <xsd:element name="applicationReference" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="subMerchId" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getServiceProviderCategoriesResponse" type="sad:getServiceProviderCategoriesResponse">
+    <xsd:annotation>
+      <xsd:documentation>Service provider categories Response</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="getServiceProviderCategoriesResponse">
+    <xsd:annotation>
+      <xsd:documentation>Service provider categories Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="code" type="xsd:string"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="spidDescription" type="xsd:string"/>
+      <xsd:element name="spid" type="xsd:string"/>
+      <xsd:element name="paymentType" type="xsd:string"/>
+      <xsd:element name="barringCodes" type="xsd:string"/>
+      <xsd:element name="category" type="xsd:string"/>
+      <xsd:element name="status" type="xsd:string"/>
+      <xsd:element name="operatorID" type="xsd:string"/>
+      <xsd:element name="puk" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Personal Unblocking Key</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getServiceProviderCategoriesFault" type="xcore:SOAFaultType">
+    <xsd:annotation>
+      <xsd:documentation>Service provider categories Fault</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:D:\Backup\2010SF\viewserviceproviderdetails\spa_2_0\schema\spaservice_2_0.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="SPA_2_0" targetNamespace="http://soa.o2.co.uk/sdp/spaservice_2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:sps="http://soa.o2.co.uk/sdp/spaservice_2">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://soa.o2.co.uk/sdp/spadata_2" schemaLocation="spadata_2_0.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getServiceProviderDetails">
+    <wsdl:part name="getServiceProviderDetails" element="sad:getServiceProviderDetails"/>
+  </wsdl:message>
+  <wsdl:message name="getServiceProviderDetailsResponse">
+    <wsdl:part name="getServiceProviderDetailsResponse" element="sad:getServiceProviderDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getServiceProviderDetailsFault">
+    <wsdl:part name="getServiceProviderDetailsFault" element="sad:getServiceProviderDetailsFault"/>
+  </wsdl:message>
+  <wsdl:message name="getServiceProviderCategories">
+    <wsdl:part name="getServiceProviderCategories" element="sad:getServiceProviderCategories"/>
+  </wsdl:message>
+  <wsdl:message name="getServiceProviderCategoriesResponse">
+    <wsdl:part name="getServiceProviderCategoriesResponse" element="sad:getServiceProviderCategoriesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getServiceProviderCategoriesFault">
+    <wsdl:part name="getServiceProviderCategoriesFault" element="sad:getServiceProviderCategoriesFault"/>
+  </wsdl:message>
+  <wsdl:portType name="SpaPort">
+    <wsdl:operation name="getServiceProviderDetails">
+      <wsdl:input name="getServiceProviderDetails" message="sps:getServiceProviderDetails"/>
+      <wsdl:output name="getServiceProviderDetailsResponse" message="sps:getServiceProviderDetailsResponse"/>
+      <wsdl:fault name="getServiceProviderDetailsFault" message="sps:getServiceProviderDetailsFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceProviderCategories">
+      <wsdl:input name="getServiceProviderCategories" message="sps:getServiceProviderCategories"/>
+      <wsdl:output name="getServiceProviderCategoriesResponse" message="sps:getServiceProviderCategoriesResponse"/>
+      <wsdl:fault name="getServiceProviderCategoriesFault" message="sps:getServiceProviderCategoriesFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SpaBinding" type="sps:SpaPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getServiceProviderDetails">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getServiceProviderDetails">
+        <soap:body parts="getServiceProviderDetails" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getServiceProviderDetailsResponse">
+        <soap:body parts="getServiceProviderDetailsResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getServiceProviderDetailsFault">
+        <soap:fault name="getServiceProviderDetailsFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceProviderCategories">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getServiceProviderCategories">
+        <soap:body parts="getServiceProviderCategories" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getServiceProviderCategoriesResponse">
+        <soap:body parts="getServiceProviderCategoriesResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getServiceProviderCategoriesFault">
+        <soap:fault name="getServiceProviderCategoriesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SpaService">
+    <wsdl:port name="SpaPort" binding="sps:SpaBinding">
+      <soap:address location="https://sdpapi.o2.co.uk/services/sdp/Spa_2_0"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache></con:interface><con:testSuite name="Spa_2_0:getServiceProviderDetails Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Success Case" searchProperties="true" id="5c31d101-c2cb-4e62-91af-82c26dbc7e65"><con:settings/><con:testStep type="request" name="Spa_gSPD_FT_0001"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0001"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706-1a29961ed815</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0002"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0002"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447706727851</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>PREPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0003"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0003"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1"></cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447841359533</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0004"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0004"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706-1a29961ed815</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447703458536</spad:msisdn>
+         <spad:applicationReference>0711ef49-f0b5-4f92-8706-1a2996</spad:applicationReference>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0005"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0005"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID/>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888828</spad:msisdn>
+         <spad:applicationReference>0711ef49-f0b5-4f92-8706-1a299</spad:applicationReference>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0006"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0006"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706-1a29961ed815</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888827</spad:msisdn>
+         <spad:applicationReference>0711ef49-f0b5-4f92-8706-1a2996123</spad:applicationReference>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>PREPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0007"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0007"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888829</spad:msisdn>
+         <!--type: string-->
+         <spad:subMerchId>O2_UK</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0008"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0008"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706-1a29961ed815</cor:SOATransactionID>
+      <cor:applicationID>DASHBOARD</cor:applicationID>
+      <cor:providerID>O212</cor:providerID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888831</spad:msisdn>
+         <spad:applicationReference>0711ef49-f0b5-4f92-8706-1a299678</spad:applicationReference>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>PREPAY</spad:paymentType>
+  <spad:operatorID>O2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0009"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0009"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706-1a29961ed815</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447503714684</spad:msisdn>
+         <spad:applicationReference>9911ef49-f0b5-4f92-8706-1a299</spad:applicationReference>
+         <!--type: string-->
+         <spad:subMerchId>O2_UK</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderDetailsResponse</path><content><![CDATA[<spad:getServiceProviderDetailsResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:paymentType>UNKNOWN</spad:paymentType>
+  <spad:operatorID>nonO2</spad:operatorID>
+</spad:getServiceProviderDetailsResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0010" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0010"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0011" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0011"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:loadTest name="LoadTest 1"><con:settings/><con:threadCount>5</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>false</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>60</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors></con:loadTest><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Fault Case" searchProperties="true" id="d587858d-a7c7-4a76-a757-2ad3579ef7ea"><con:settings/><con:testStep type="request" name="Spa_gSPD_FT_0012"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0012"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07702059016</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0013"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0013"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07841359533</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0014"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0014"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07703458536</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0015"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0015"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07706727851</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0016"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0016"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>47501234567</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0017"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0017"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>07889174725</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0018"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0018"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0019"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0019"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>29961ed815</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+         <spad:applicationReference>9911ef49-f0b5-4f92-8706-1a299</spad:applicationReference>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter APPLICATION_REFERENCE has invalid length.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0020"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0020"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn/>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN is empty.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0021"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0021"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>$$$######^^^^^</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0022" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0022"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0023" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0023"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0024"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0024"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888829</spad:msisdn>
+         <!--type: string-->
+         <spad:subMerchId>O2_UKgfhjyturtuyhgt-yuijuhythg2</spad:subMerchId>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderDetailsFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter SUBMERCHANT_ID has invalid length.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Failure Case" searchProperties="true" id="ade6a025-4e39-427d-a14d-17173785c06a"><con:settings/><con:testStep type="request" name="Spa_gSPD_FT_0025"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0025"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>0711ef49-f0b5-4f92-8706-1a29961ed815</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//soapenv:Fault</path><content><![CDATA[<soapenv:Fault xmlns:cor="http://soa.o2.co.uk/coredata_1" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring>ALSB Validate action failed validation</faultstring>
+  <detail>
+    <spad:getServiceProviderDetailsFault>
+      <cor:SOAFaultOriginator>Validate GetServiceProviderDetails Request</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode>BEA-382505</cor:SOAFaultCode>
+      <cor:faultDescription>ALSB Validate action failed validation</cor:faultDescription>
+      <cor:SOATransactionID>*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</soapenv:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPD_FT_0026"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderDetails</con:operation><con:request name="Spa_gSPD_FT_0026"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID/>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderDetails>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+         <spad:msisdn>447702052016</spad:msisdn>
+         <spad:msisdn>447702879016</spad:msisdn>
+      </spad:getServiceProviderDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//soapenv:Fault</path><content><![CDATA[<soapenv:Fault xmlns:cor="http://soa.o2.co.uk/coredata_1" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring>ALSB Validate action failed validation</faultstring>
+  <detail>
+    <spad:getServiceProviderDetailsFault>
+      <cor:SOAFaultOriginator>Validate GetServiceProviderDetails Request</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode>BEA-382505</cor:SOAFaultCode>
+      <cor:faultDescription>ALSB Validate action failed validation</cor:faultDescription>
+      <cor:SOATransactionID>*</cor:SOATransactionID>
+    </spad:getServiceProviderDetailsFault>
+  </detail>
+</soapenv:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/><con:tearDownScript/></con:testSuite><con:testSuite name="Spa_2_0:getServiceProviderCategories Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Success Case" searchProperties="true" id="93711bee-cc54-4395-b6cc-5c9a5553a99f"><con:settings/><con:testStep type="request" name="Spa_gSPC_FT_0001"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0001"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+      
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>O2 UK Ltd - Companion</spad:spidDescription>
+  <spad:spid>429</spad:spid>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:barringCodes>W</spad:barringCodes>
+  <spad:category>O2 CONSUMER ONLINE</spad:category>
+  <spad:status>A</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0002"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0002"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447706727851</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>PREPAY</spad:spidDescription>
+  <spad:spid>305</spad:spid>
+  <spad:paymentType>PREPAY</spad:paymentType>
+  <spad:barringCodes>9,B,J,it,O</spad:barringCodes>
+  <spad:category>O2 CONSUMER ONLINE</spad:category>
+  <spad:status>A</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0003"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0003"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID/>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447841359533</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>O2</spad:spidDescription>
+  <spad:spid>267</spad:spid>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:barringCodes/>
+  <spad:category>O2 CORPORATE</spad:category>
+  <spad:status>A</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk/>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0004"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0004"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447703458536</spad:msisdn>
+         <!--type: string-->
+         <spad:applicationReference>dc5b17a2-13c0-4920-b672-56a4c6</spad:applicationReference>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>DISE 860</spad:spidDescription>
+  <spad:spid>344</spad:spid>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:barringCodes>W</spad:barringCodes>
+  <spad:category>O2 SME DISE</spad:category>
+  <spad:status>A</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0005"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0005"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID/>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888828</spad:msisdn>
+         <spad:applicationReference>hghb17a2-13c0-4920-b672-56a4c</spad:applicationReference>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>O2 CONSUMER</spad:spidDescription>
+  <spad:spid>114</spad:spid>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:barringCodes>L,l</spad:barringCodes>
+  <spad:category>O2 CONSUMER OFFLINE TIED</spad:category>
+  <spad:status>D</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0006"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0006"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888827</spad:msisdn>
+         <!--type: string-->
+         <spad:applicationReference>hghb17a2-13c0-4920-b672-56a4cjkj</spad:applicationReference>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>Consumer Pay and Go</spad:spidDescription>
+  <spad:spid>174</spad:spid>
+  <spad:paymentType>PREPAY</spad:paymentType>
+  <spad:barringCodes>J</spad:barringCodes>
+  <spad:category>O2 CONSUMER OFFLINE</spad:category>
+  <spad:status>D</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0007"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0007"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888829</spad:msisdn>
+         <!--type: string-->
+         <spad:subMerchId>O2_UK</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>O2 CORPORATE</spad:spidDescription>
+  <spad:spid>115</spad:spid>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:barringCodes>sb,hb</spad:barringCodes>
+  <spad:category>O2 CORPORATE TIED</spad:category>
+  <spad:status>D</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0008"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0008"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:applicationID>dashboard</cor:applicationID>
+      <cor:providerID>orange</cor:providerID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888831</spad:msisdn>
+         <spad:applicationReference>999b17a2-13c0-4920-b672-56a4c6c07855</spad:applicationReference>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>O2 - SME</spad:spidDescription>
+  <spad:spid>329</spad:spid>
+  <spad:paymentType>PREPAY</spad:paymentType>
+  <spad:barringCodes>9,L,u</spad:barringCodes>
+  <spad:category>O2 CORPORATE TIED</spad:category>
+  <spad:status>D</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0009"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0009"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447764558536</spad:msisdn>
+         <spad:applicationReference>dc5b17a2-13c0-4920-b672-56a4c6</spad:applicationReference>
+         <!--type: string-->
+         <spad:subMerchId>O2_UK</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription/>
+  <spad:spid/>
+  <spad:paymentType>UNKNOWN</spad:paymentType>
+  <spad:barringCodes/>
+  <spad:category>Non-O2</spad:category>
+  <spad:status/>
+  <spad:operatorID>nonO2</spad:operatorID>
+  <spad:puk/>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0010"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0010"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesResponse</path><content><![CDATA[<spad:getServiceProviderCategoriesResponse xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <spad:code>SPA0000S</spad:code>
+  <spad:description>The request is completed successfully</spad:description>
+  <spad:spidDescription>O2 UK Ltd - Companion</spad:spidDescription>
+  <spad:spid>429</spad:spid>
+  <spad:paymentType>POSTPAY</spad:paymentType>
+  <spad:barringCodes>W</spad:barringCodes>
+  <spad:category>O2 CONSUMER ONLINE</spad:category>
+  <spad:status>A</spad:status>
+  <spad:operatorID>O2</spad:operatorID>
+  <spad:puk>1234</spad:puk>
+</spad:getServiceProviderCategoriesResponse>]]></content><allowWildcards>false</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0011" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0011"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0012" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0012"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Fault Case" searchProperties="true" id="43a76040-d036-4509-a882-72d3011dc0b1"><con:settings/><con:testStep type="request" name="Spa_gSPC_FT_0013"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0013"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07702059016</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//spad:getServiceProviderCategoriesFault</path><content><![CDATA[<spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+  <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+  <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+  <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+</spad:getServiceProviderCategoriesFault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0014"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0014"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07841359533</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0015"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0015"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07703458536</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0016"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0016"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07706727851</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0017"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0017"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>47501234567</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0018"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0018"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>07889174725</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0019"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0019"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b665215487</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter APPLICATION_REFERENCE has invalid length.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0020"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0020"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b6652154</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447702059016</spad:msisdn>
+         <spad:applicationReference>854b17a2-13c0-4920-b672</spad:applicationReference>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter APPLICATION_REFERENCE has invalid length.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0021"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0021"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn/>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN is empty.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0022"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0022"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447704#@1748</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter MSISDN has invalid format.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0023" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0023"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0024" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0024"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://sdpapi.o2.co.uk/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>gero et</spad:msisdn>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:applicationReference>sonoras imperio</spad:applicationReference>
+         <!--Optional:-->
+         <!--type: string-->
+         <spad:subMerchId>quae divum incedo</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0025"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0025"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447788888829</spad:msisdn>
+         <!--type: string-->
+         <spad:subMerchId>O2_UKgfhjyturtuyhgt-yuijuhythg2</spad:subMerchId>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace env='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env1='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//env:Fault</path><content><![CDATA[<env:Fault xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring/>
+  <detail>
+    <spad:getServiceProviderCategoriesFault xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2">
+      <cor:SOAFaultOriginator xmlns:cor="http://soa.o2.co.uk/coredata_1">Spa</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode xmlns:cor="http://soa.o2.co.uk/coredata_1">SPA2001E</cor:SOAFaultCode>
+      <cor:faultDescription xmlns:cor="http://soa.o2.co.uk/coredata_1">Validation of parameters failed. The parameter SUBMERCHANT_ID has invalid length.</cor:faultDescription>
+      <cor:SOATransactionID xmlns:cor="http://soa.o2.co.uk/coredata_1">*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</env:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Failure Case" searchProperties="true" id="a0739b73-e2ac-4dae-8b00-bf93ad39d2da"><con:settings/><con:testStep type="request" name="Spa_gSPC_FT_0026"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0026"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+     
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//soapenv:Fault</path><content><![CDATA[<soapenv:Fault xmlns:cor="http://soa.o2.co.uk/coredata_1" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring>ALSB Validate action failed validation</faultstring>
+  <detail>
+    <spad:getServiceProviderCategoriesFault>
+      <cor:SOAFaultOriginator>Validate GetServiceProviderCategories Request</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode>BEA-382505</cor:SOAFaultCode>
+      <cor:faultDescription>ALSB Validate action failed validation</cor:faultDescription>
+      <cor:SOATransactionID>*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</soapenv:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:testStep type="request" name="Spa_gSPC_FT_0027"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpaBinding</con:interface><con:operation>getServiceProviderCategories</con:operation><con:request name="Spa_gSPC_FT_0027"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9090/services/sdp/Spa_2_0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:cor="http://soa.o2.co.uk/coredata_1">
+   <soapenv:Header>
+      <cor:SOATransactionID>dc5b17a2-13c0-4920-b672-56a4c6c07855</cor:SOATransactionID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <spad:getServiceProviderCategories>
+         <!--type: msisdnType-->
+         <spad:msisdn>447889174725</spad:msisdn>
+         <spad:msisdn>447889174725</spad:msisdn>
+      </spad:getServiceProviderCategories>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion"/><con:assertion type="XPath Match"><con:configuration><path>declare namespace cor='http://soa.o2.co.uk/coredata_1';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace env='http://schemas.xmlsoap.org/soap/envelope';
+declare namespace spad='http://soa.o2.co.uk/sdp/spadata_2';
+//soapenv:Fault</path><content><![CDATA[<soapenv:Fault xmlns:cor="http://soa.o2.co.uk/coredata_1" xmlns:spad="http://soa.o2.co.uk/sdp/spadata_2" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:env="http://schemas.xmlsoap.org/soap/envelope">env:Server</faultcode>
+  <faultstring>ALSB Validate action failed validation</faultstring>
+  <detail>
+    <spad:getServiceProviderCategoriesFault>
+      <cor:SOAFaultOriginator>Validate GetServiceProviderCategories Request</cor:SOAFaultOriginator>
+      <cor:SOAFaultCode>BEA-382505</cor:SOAFaultCode>
+      <cor:faultDescription>ALSB Validate action failed validation</cor:faultDescription>
+      <cor:SOATransactionID>*</cor:SOATransactionID>
+    </spad:getServiceProviderCategoriesFault>
+  </detail>
+</soapenv:Fault>]]></content><allowWildcards>true</allowWildcards></con:configuration></con:assertion></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/><con:tearDownScript/></con:testSuite><con:properties/><con:afterLoadScript/><con:wssContainer/></con:soapui-project>

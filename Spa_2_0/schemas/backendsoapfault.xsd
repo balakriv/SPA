@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spa="http:/www.o2.com/schema/sdp/service/spa/0.1">
+
+	<import namespace="http:/www.o2.com/schema/sdp/service/spa/0.1" schemaLocation="../../SouthBoundInterfaces/spa200/spa-adapter.xsd"/>
+
+	<element name="Fault" type="soapenv:Fault"/>
+
+	<complexType name="Fault">
+		<sequence>
+			<element name="faultcode" type="string"/>
+			<element name="faultstring" type="string"/>
+			<element name="detail" type="soapenv:detail"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="detail">
+		<choice>
+			<element ref="spa:getServiceProviderCategoriesFault"/>
+			<element ref="spa:getServiceProviderDetailsFault"/>
+
+		</choice>
+	</complexType>
+
+</schema>
