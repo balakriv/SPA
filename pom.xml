@@ -38,13 +38,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency> 
-                        <groupId>com.oracle</groupId> 
-                        <artifactId>ojdbc5</artifactId> 
-                        <version>11.1.0</version> 
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
