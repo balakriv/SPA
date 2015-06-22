@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>o2_ooa</groupId>
-    <artifactId>SPA</artifactId>
-    <name>SPA</name>
-    <packaging>pom</packaging>
+    <groupId>nl.rubix</groupId>
+    <artifactId>HelloService</artifactId>
+    <name>HelloService</name>
+    <packaging>jar</packaging>
     <version>1.0</version>
  
     <pluginRepositories>
@@ -26,8 +26,8 @@
                         <phase>verify</phase>
                         <id>soapui-tests</id>
                         <configuration>
-                            <projectFile>spaservice-2-0-soapui-project.xml</projectFile>
-                            <outputFolder>target/soapui</outputFolder>
+                            <projectFile>${basedir}/Test/HelloService-soapui-project.xml</projectFile>
+                            <outputFolder>${basedir}/target/soapui</outputFolder>
                             <junitReport>true</junitReport>
                             <exportAll>true</exportAll>
                             <printReport>true</printReport>
