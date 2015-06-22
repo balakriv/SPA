@@ -26,8 +26,8 @@
                         <phase>verify</phase>
                         <id>soapui-tests</id>
                         <configuration>
-                            <projectFile>${basedir}/testing/ref/spaservice-2-0-soapui-project.xml</projectFile>
-                            <outputFolder>${basedir}/target/soapui</outputFolder>
+                            <projectFile>spaservice-2-0-soapui-project.xml</projectFile>
+                            <outputFolder>target/soapui</outputFolder>
                             <junitReport>true</junitReport>
                             <exportAll>true</exportAll>
                             <printReport>true</printReport>
